@@ -15,6 +15,7 @@
   The current user is <%= current_user.fname %>
     <% @pets.each do |pet| %>
       <tr>
+        <td><%= image_tag pet.picture, class:"pet-image" if pet.picture.attached? %></td>
         <td><%= pet.name %></td>
         <td><%= pet.user.fname %></td>
         <td><%= link_to 'Show', pet %></td>
