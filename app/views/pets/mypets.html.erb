@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pets</h1>
+<h1>My Pets</h1>
 
 <table>
   <thead>
@@ -12,7 +12,6 @@
   </thead>
 
   <tbody>
-  The current user is <%= current_user.fname %>
     <% @pets.each do |pet| %>
       <tr>
         <td><%= pet.name %></td>
