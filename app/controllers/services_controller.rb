@@ -4,7 +4,14 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
-    @services = Service.all
+    @allservices = Service.all
+    @services = []
+    
+    @allservices.each { |service| 
+      if service.user_id == current_user.id
+        @services << service
+      end
+      }
   end
 
   # GET /services/1
@@ -25,6 +32,7 @@ class ServicesController < ApplicationController
   # POST /services.json
   def create
     @service = Service.new(service_params)
+    @service.user_id = current_user.id
 
     respond_to do |format|
       if @service.save
