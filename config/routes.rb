@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :bookings
   resources :services
   resources :pets
   devise_for :users
