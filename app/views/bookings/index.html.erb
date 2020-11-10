@@ -17,6 +17,7 @@
         <td><%= booking.user_id %></td>
         <td><%= booking.service.name %></td>
         <td><%= booking.service.user.fname %></td>
+        <td><%= booking.service.price %></td>
         <td><%= link_to 'Show', booking %></td>
         <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
         <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,6 +26,19 @@
   </tbody>
 </table>
 
+<% if user_signed_in? %>
+    <button data-stripe="payment", class="btn btn-primary">Buy Now</button>
+    
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        document.querySelector("[data-stripe='payment']").addEventListener("click", () => {
+            const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public_key) %>");
+            stripe.redirectToCheckout({
+                sessionId: "<%= @session_id %>"
+            });
+        });
+    </script>
+<%end%>
 <br>
 
 <%= link_to 'New Booking', new_booking_path %>
