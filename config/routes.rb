@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#about'
   get '/my_services', to: 'services#my_services'
   root to: 'pages#home'
+
+  
 end

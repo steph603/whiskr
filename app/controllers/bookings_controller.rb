@@ -14,21 +14,18 @@ class BookingsController < ApplicationController
       @prices << booking.service.price
       end 
     }
-    @total = @prices.sum
-
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       customer_email: current_user.email,
       line_items: [{
-          name: 'Your booking',
-          description: 'Total of all items',
-          amount: (@total * 100).to_i,
+          name: 'Your Whiskr Booking',
+          amount: (@prices.sum * 100).to_i,
           currency: 'aud',
           quantity: 1,
       }],
       payment_intent_data: {
           metadata: {
-              listing_id: '1'
+              listing_id: @session_id
           }
       },
       success_url: "#{root_url}bookings/success?serviceId=#{1}",
