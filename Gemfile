@@ -58,3 +58,4 @@ gem "aws-sdk-s3", "~> 1.83"
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'cancancan'
+gem 'stripe'
