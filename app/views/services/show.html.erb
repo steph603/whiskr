@@ -16,9 +16,36 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @service.user_id %>
+  <strong>Service offered by:</strong>
+  <%= @service.user.fname %>
 </p>
+
 
 <%= link_to 'Edit', edit_service_path(@service) %> |
 <%= link_to 'Back', services_path %>
+
+
+
+<%# Cull everything after this point  %>
+
+<%= form_with(model: @booking, local: true) do |form| %>
+  <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+        <% @booking.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <%= form.hidden_field :service_id, value: @service.id %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

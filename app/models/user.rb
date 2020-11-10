@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :pets
   has_many :services
+  has_many :bookings
 end

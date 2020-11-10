@@ -17,6 +17,8 @@ class ServicesController < ApplicationController
   # GET /services/1
   # GET /services/1.json
   def show
+    @booking = Booking.new
+    # @booking.service_id = @service.id 
   end
 
   # GET /services/new

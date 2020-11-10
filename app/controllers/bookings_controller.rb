@@ -15,7 +15,6 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
-
   end
 
   # GET /bookings/1/edit
@@ -27,6 +26,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
+    @booking.service_id = (booking_params[:service_id])
 
     respond_to do |format|
       if @booking.save
