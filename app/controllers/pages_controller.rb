@@ -11,6 +11,7 @@ class PagesController < ApplicationController
       @lines << b 
       end
       }
+      
   end
 
   def about

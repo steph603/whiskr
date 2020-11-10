@@ -1,9 +1,15 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :my_services]
   # GET /services
   # GET /services.json
-  def index
+
+  def index 
+    @services = Service.all
+  end
+
+
+  def my_services
     @allservices = Service.all
     @services = []
     

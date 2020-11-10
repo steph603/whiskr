@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/checkout', to: 'pages#checkout'
   get '/about', to: 'pages#about'
+  get '/my_services', to: 'services#my_services'
   root to: 'pages#home'
 end
