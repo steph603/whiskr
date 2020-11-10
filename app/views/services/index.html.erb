@@ -21,12 +21,12 @@
         <td><%= service.price %></td>
         <td><%= service.user_id %></td>
         <td><%= link_to 'Show', service %></td>
-        <% if can? :update, service %>
+        
+        <% if can? :manage, service %>
         <td><%= link_to 'Edit', edit_service_path(service) %></td>
-        <% end %>
-        <% if can? :destroy, service %>
         <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <%end%>
+
       </tr>
     <% end %>
   </tbody>

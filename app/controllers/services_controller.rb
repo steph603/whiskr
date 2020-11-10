@@ -26,7 +26,6 @@ class ServicesController < ApplicationController
   def show
     @booking = Booking.new
 
-
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       customer_email: current_user.email,
