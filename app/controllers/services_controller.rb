@@ -24,7 +24,29 @@ class ServicesController < ApplicationController
   # GET /services/1.json
   def show
     @booking = Booking.new
-    # @booking.service_id = @service.id 
+
+
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      customer_email: current_user.email,
+      line_items: [{
+          name: @service.name,
+          description: @service.description,
+          # images: [@listing.picture],
+          amount: (@service.price * 100).to_i,
+          currency: 'aud',
+          quantity: 1,
+      }],
+      payment_intent_data: {
+          metadata: {
+              listing_id: @service.id
+          }
+      },
+      success_url: "#{root_url}bookings/success?serviceId=#{@service.id}",
+      cancel_url: "#{root_url}"
+    )
+    @session_id = session.id
+
   end
 
   # GET /services/new
