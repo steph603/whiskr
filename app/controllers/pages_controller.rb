@@ -15,6 +15,13 @@ class PagesController < ApplicationController
   end
 
   def find
+    @nurses = []
+    @users = User.all
+    @users.each { | user | 
+      if user.is_nurse 
+        @nurses << user 
+      end 
+    }
   end
   
   def about

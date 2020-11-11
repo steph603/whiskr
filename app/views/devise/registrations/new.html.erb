@@ -19,6 +19,8 @@
   </div>
 
 
+
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -30,6 +32,10 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+  <div class="field">
+    <%= f.label :picture %>
+    <%= f.file_field :picture, accept: 'image/png, image/jpg, image/jpeg' %>
   </div>
 
   <div class="field">

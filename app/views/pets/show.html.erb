@@ -12,6 +12,7 @@
   <%= @pet.user_id %>
 </p>
 
-
+<% if can? :manage, @pet %>
 <%= link_to 'Edit', edit_pet_path(@pet) %> |
+<%end%>
 <%= link_to 'Back', pets_path %>

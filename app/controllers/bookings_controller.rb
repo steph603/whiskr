@@ -30,7 +30,7 @@ class BookingsController < ApplicationController
                 listing_id: @session_id
             }
         },
-        success_url: "#{root_url}success/",
+        success_url: "#{root_url}success?session_id={CHECKOUT_SESSION_ID}",
         cancel_url: "#{root_url}"
       )
       @session_id = session.id

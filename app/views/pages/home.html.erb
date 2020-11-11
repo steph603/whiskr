@@ -14,26 +14,26 @@
             <%= image_tag 'signup.png', class: "rounded-circle spot", alt: "Clipboard Image"%>
               <h2>Sign Up</h2>
               <p>Join us as a Pet Parent or start helping pets as a Veterinary Nurse!</p>
-              <p><a class="btn btn-secondary" href="#" role="button">Sign Up Now &raquo;</a></p>
+              <p><%= link_to "Sign Up", :new_user_registration, class: "btn btn-secondary", role: "button" %></p>
           </div><!-- /.col-lg-4 -->
 
           <div class="col-lg-4 text-center">
             <%= image_tag 'nurse.png', class: "rounded-circle spot", alt: "Nurse Image"%>
               <h2>Find a Nurse</h2>
               <p>Find a qualified and insured mobile veterinary nurse in your area.</p>
-              <p><a class="btn btn-secondary" href="#" role="button">Let's Go! &raquo;</a></p>
+              <p><%= link_to "Let's Go!", :find, class: "btn btn-secondary", role: "button" %></p>
           </div><!-- /.col-lg-4 -->
 
           <div class="col-lg-4 text-center">
             <%= image_tag 'about.png', class: "rounded-circle spot", alt: "About Image"%>              <h2>About</h2>
               <p>We help find care for pets in the comfort of their own home.</p>
-              <p><a class="btn btn-secondary" href="#" role="button">Learn More... &raquo;</a></p>
+              <p><%= link_to "Learn More", :about, class: "btn btn-secondary", role: "button" %></p>
           </div><!-- /.col-lg-4 -->
 
       </div><!-- /.row -->
     </div>
 
-    <div class="row featurette f1">
+    <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
         <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>

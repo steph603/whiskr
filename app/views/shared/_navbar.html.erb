@@ -14,7 +14,7 @@
         <% if user_signed_in? %>
             <%= link_to "My Profile", :edit_user_registration %>
         <% if current_user.is_nurse %>
-            <%= link_to "My Services", :services %>
+            <%= link_to "My Services", :my_services %>
         <% end %>
             <%= link_to "My Pets", :pets %>
             <%= link_to "Sign Out", :destroy_user_session, method: "delete" %>
