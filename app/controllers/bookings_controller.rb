@@ -5,6 +5,40 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
+
+    @prices = []
+    @bookings = []
+    @all_bookings = Booking.all
+    @all_bookings.each { |booking | 
+      if booking.user_id == current_user.id && !booking.paid
+      @bookings << booking
+      @prices << booking.service.price
+      end 
+    }
+    if @prices.sum > 0
+      session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        customer_email: current_user.email,
+        line_items: [{
+            name: 'Your Whiskr Booking',
+            amount: (@prices.sum * 100).to_i,
+            currency: 'aud',
+            quantity: 1,
+        }],
+        payment_intent_data: {
+            metadata: {
+                listing_id: @session_id
+            }
+        },
+        success_url: "#{root_url}success/",
+        cancel_url: "#{root_url}"
+      )
+      @session_id = session.id
+    end
+
+  end
+
+  def success 
     @prices = []
     @bookings = []
     @all_bookings = Booking.all
@@ -12,27 +46,9 @@ class BookingsController < ApplicationController
       if booking.user_id == current_user.id
       @bookings << booking
       @prices << booking.service.price
+      booking.update(paid: true)
       end 
     }
-    session = Stripe::Checkout::Session.create(
-      payment_method_types: ['card'],
-      customer_email: current_user.email,
-      line_items: [{
-          name: 'Your Whiskr Booking',
-          amount: (@prices.sum * 100).to_i,
-          currency: 'aud',
-          quantity: 1,
-      }],
-      payment_intent_data: {
-          metadata: {
-              listing_id: @session_id
-          }
-      },
-      success_url: "#{root_url}bookings/success?serviceId=#{1}",
-      cancel_url: "#{root_url}"
-    )
-    @session_id = session.id
-
   end
 
   # GET /bookings/1

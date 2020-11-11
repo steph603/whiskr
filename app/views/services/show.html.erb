@@ -27,18 +27,3 @@
 
 <%= render 'booking', service: @service %>
 
-
-<% if user_signed_in? %>
-    <button data-stripe="payment", class="btn btn-primary">Buy Now</button>
-    
-    <script src="https://js.stripe.com/v3/"></script>
-
-    <script>
-        document.querySelector("[data-stripe='payment']").addEventListener("click", () => {
-            const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public_key) %>");
-            stripe.redirectToCheckout({
-                sessionId: "<%= @session_id %>"
-            });
-        });
-    </script>
-<% end %>

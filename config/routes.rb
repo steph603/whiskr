@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   get '/my_services', to: 'services#my_services'
   root to: 'pages#home'
 
+  get 'success/', to: 'bookings#success' 
   
 end
