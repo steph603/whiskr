@@ -26,7 +26,7 @@ class AddressesController < ApplicationController
   # POST /addresses.json
   def create
     @address = Address.new(address_params)
-
+    code_address
     respond_to do |format|
       if @address.save
         format.html { redirect_to @address, notice: 'Address was successfully created.' }
@@ -41,6 +41,7 @@ class AddressesController < ApplicationController
   # PATCH/PUT /addresses/1
   # PATCH/PUT /addresses/1.json
   def update
+    code_address
     respond_to do |format|
       if @address.update(address_params)
         format.html { redirect_to @address, notice: 'Address was successfully updated.' }
@@ -68,8 +69,12 @@ class AddressesController < ApplicationController
       @address = Address.find(params[:id])
     end
 
+    def code_address
+      @address.address = "#{@address.suburb}, #{@address.state}"
+    end
+
     # Only allow a list of trusted parameters through.
-    def address_params
-      params.require(:address).permit(:user_id, :address, :latitude, :longitude)
+    def address_params 
+      params.require(:address).permit(:user_id, :suburb, :state, :latitude, :longitude)
     end
 end
