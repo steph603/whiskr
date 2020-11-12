@@ -1,5 +1,6 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /addresses
   # GET /addresses.json
@@ -26,11 +27,12 @@ class AddressesController < ApplicationController
   # POST /addresses.json
   def create
     @address = Address.new(address_params)
+    @address.user_id = current_user.id
     code_address
     respond_to do |format|
       if @address.save
-        format.html { redirect_to @address, notice: 'Address was successfully created.' }
-        format.json { render :show, status: :created, location: @address }
+        format.html { redirect_to new_pet_path, notice: 'Address was successfully created.' }
+        format.json { render :create, status: :created, location: @pet }
       else
         format.html { render :new }
         format.json { render json: @address.errors, status: :unprocessable_entity }
