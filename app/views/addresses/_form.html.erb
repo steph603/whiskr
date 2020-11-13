@@ -1,3 +1,7 @@
+<div class="form-signin text-center container" >
+
+<%= image_tag("logo.png", class: "mb-4")%>
+<h2 class="h3 mb-3 font-weight-normal" >Where do you live?</h2>
 <%= form_with(model: address, local: true) do |form| %>
   <% if address.errors.any? %>
     <div id="error_explanation">
@@ -12,20 +16,20 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :Street %>
-    <%= form.text_field :street %>
+    <%= form.text_field :street, class: "form-control", placeholder: "Street" %>
   </div>
   <div class="field">
-    <%= form.label :Suburb %>
-    <%= form.text_field :suburb %>
+
+    <%= form.text_field :suburb, class: "form-control", placeholder: "Suburb" %>
   </div>
 
   <div class="field">
-    <%= form.label :State %>
-    <%= form.text_field :state %>
+  <%= form.select(:state, [['New South Wales', 'NSW'], ['Victoria', 'VIC'], ['Queensland', 'QLD'], ['South Australia', 'SA'], ['Tasmania', 'TAS'], ['Western Australia', 'WA']])%>
+    <%# <%= form.select :state, options_for_select["NSW", "VIC", "QLD", "NT", "TAS", "ACT"] %> 
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>

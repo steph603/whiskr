@@ -21,10 +21,28 @@ font-family: 'Sacramento', cursive; */
 #1D1E20 - Eerie Black
 #4c5C68 - Black Coral
 #1985A1 - Blue Munsell */
+
+
+// @import "../../../node_modules/rfs/scss";
 @import "bootstrap";
 @import "pets";
 @import "pages";
 @import "services";
+
+
+
+.title {
+    // @include responsive-font-size(200px);
+    font-size: 200px;
+    font-family: 'Sacramento', cursive; 
+    position: absolute;
+    top: 70px;
+    left: 50px;
+    color: #C5C3C6;
+    text-shadow: 3px 3px #4c5C68;
+    
+    margin-bottom: 60px;
+}
 
 .featurette {
   margin: 10px 0px;
@@ -52,11 +70,6 @@ font-family: 'Sacramento', cursive; */
        }
   }
 
-  h1 {
-    font-family: 'Sacramento', cursive; 
-    font-size: 200px;
-    margin-bottom: 60px;
-  }
   .spot {
     height: 140px;
     width: 140px;

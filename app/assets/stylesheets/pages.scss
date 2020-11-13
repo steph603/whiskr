@@ -8,14 +8,16 @@
     margin-bottom: 60px;
 }
 
-.header {
-    position: absolute;
-    top: 70px;
-    left: 50px;
-    color: #C5C3C6;
-    text-shadow: 3px 3px #4c5C68;
-    h4 {
-        font-family: 'Lato', sans-serif;
-        font-size: 25px; 
-      }
+.mb-4 {
+    height: 80px;
+    opacity: 0.8;
 }
+
+.form-signin {
+    margin-top: 150px;
+    width: 40%;
+    background-color: #C5C3C680;
+    padding: 40px;
+    border-radius: 10px;
+}
+
