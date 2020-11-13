@@ -1,7 +1,13 @@
 <h2> Come here to find a nurse </h2>
 
-
-<% @nurses.each do |nurse| %>
-<%= nurse.fname %>
-<%end%>
-<br>
+<div class="card-container">
+    <% @nurses.each do |nurse| %>
+        <div class="nurse-card">
+        <%= image_tag nurse.picture, class:"pet-image"  if nurse.picture.attached? %>
+        <%= nurse.fname %>
+        </div>
+    <%end%>
+ 
+<% if @nurses.length == 0 %>
+<p> Sorry... No results found... </p>
+<% end %>

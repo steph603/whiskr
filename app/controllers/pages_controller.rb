@@ -14,7 +14,7 @@ class PagesController < ApplicationController
       
   end
 
-  
+  # This method returns nurses within 20km of the suburb searched for
   def find
     @matches = []
     Address.near(params[:search]).each { |address| 
@@ -28,8 +28,6 @@ class PagesController < ApplicationController
       @nurses << user
       end  } 
     }
-
-
   end
   
   def about

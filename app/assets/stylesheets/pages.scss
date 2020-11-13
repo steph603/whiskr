@@ -21,3 +21,11 @@
     border-radius: 10px;
 }
 
+.card-container {
+    display: flexbox;
+}
+
+.nurse-card {
+    display: inline-block;
+    width: 20%;
+}
