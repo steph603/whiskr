@@ -14,14 +14,22 @@ class PagesController < ApplicationController
       
   end
 
+  
   def find
+    @matches = []
+    Address.near(params[:search]).each { |address| 
+      @matches << address.user_id
+    }
     @nurses = []
     @users = User.all
-    @users.each { | user | 
-      if user.is_nurse 
-        @nurses << user 
-      end 
+    @matches.each { |match| 
+      @users.each { |user|
+      if user.is_nurse && user.id == match
+      @nurses << user
+      end  } 
     }
+
+
   end
   
   def about

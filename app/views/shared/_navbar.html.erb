@@ -19,8 +19,11 @@
             <%= link_to "My Pets", :pets %>
             <%= link_to "Sign Out", :destroy_user_session, method: "delete" %>
         <% end %>
-            <form class="form-inline my-2 my-md-0">
-      <input class="form-control" type="text" placeholder="Search your city" aria-label="Location">
-    </form>
+
+
+        <%= form_tag(find_path, method: 'get') do %>
+            <%= text_field_tag(:search, params[:search]) %>
+            <%= submit_tag("Search", name: nil) %>
+        <% end %>
     </div>
  </nav>
