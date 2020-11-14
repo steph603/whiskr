@@ -46,7 +46,7 @@ class AddressesController < ApplicationController
     code_address
     respond_to do |format|
       if @address.update(address_params)
-        format.html { redirect_to my_profile_path, notice: 'Address was successfully updated.' }
+        format.html { redirect_to @address, notice: 'Address was successfully updated.' }
         format.json { render :show, status: :ok, location: @address }
       else
         format.html { render :edit }
@@ -75,13 +75,8 @@ class AddressesController < ApplicationController
       @address.address = "#{@address.suburb}, #{@address.state}"
     end
 
-    def reset_address
-      @address.address = ""
-    end
-
     # Only allow a list of trusted parameters through.
-    def address_params
-      code_address
+    def address_params 
       params.require(:address).permit(:user_id, :street, :suburb, :state, :latitude, :longitude)
     end
 end
