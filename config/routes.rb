@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get 'profile/:id', to: 'pages#profile', :as => :profile
 
   get 'success/', to: 'bookings#success' 
+  get 'my_profile/', to: 'pages#my_profile', :as => :my_profile
 
 end

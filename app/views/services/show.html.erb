@@ -1,3 +1,4 @@
+<div class="content-container">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -15,16 +16,21 @@
   <%= @service.price %>
 </p>
 
+<% if current_user.id != @service.user_id%>
 <p>
   <strong>Service offered by:</strong>
   <%= @service.user.fname %>
 </p>
+<% end %>
 
 <% if can? :manage, @service %>
 <%= link_to 'Edit', edit_service_path(@service) %> |
+<%= link_to 'Add another service', new_service_path %> |
 <%end%>
-<%= link_to 'Back', services_path %>
 
+<% if current_user.id != @service.user_id%>
 <%= render 'booking', service: @service %>
+<% end %>
 
-
+<%= link_to 'Back', :back %>
+</div>

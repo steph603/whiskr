@@ -29,7 +29,10 @@ font-family: 'Sacramento', cursive; */
 @import "pages";
 @import "services";
 
-
+.content-container {
+  margin-top: 100px;
+  margin-left: 70px;
+}
 
 .title {
     // @include responsive-font-size(200px);

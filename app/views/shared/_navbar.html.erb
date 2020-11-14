@@ -12,7 +12,7 @@
         <% end %>
 
         <% if user_signed_in? %>
-            <%= link_to "My Profile", :edit_user_registration %>
+            <%= link_to "My Profile", :my_profile %>
         <% if current_user.is_nurse %>
             <%= link_to "My Services", :my_services %>
         <% end %>

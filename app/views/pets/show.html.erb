@@ -15,4 +15,5 @@
 <% if can? :manage, @pet %>
 <%= link_to 'Edit', edit_pet_path(@pet) %> |
 <%end%>
+<%= link_to 'Add Another Pet', new_pet_path %>
 <%= link_to 'Back', pets_path %>
