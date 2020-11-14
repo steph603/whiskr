@@ -2,12 +2,21 @@
 
 <div class="card-container">
     <% @nurses.each do |nurse| %>
+    
         <div class="nurse-card">
+        <%= link_to services_path do%>
         <%= image_tag nurse.picture, class:"pet-image"  if nurse.picture.attached? %>
         <%= nurse.fname %>
+        <%end%>
         </div>
+
     <%end%>
  
 <% if @nurses.length == 0 %>
-<p> Sorry... No results found... </p>
+<p> Sorry... No results found...
+Please try again
+       <%= form_tag(find_path, method: 'get') do %>
+            <%= text_field_tag(:search, params[:search]) %>
+            <%= submit_tag("Search", name: nil) %>
+            <%end%> </p>
 <% end %>

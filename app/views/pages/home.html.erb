@@ -21,7 +21,10 @@
             <%= image_tag 'nurse.png', class: "rounded-circle spot", alt: "Nurse Image"%>
               <h2>Find a Nurse</h2>
               <p>Find a qualified and insured mobile veterinary nurse in your area.</p>
-              <p><%= link_to "Let's Go!", :find, class: "btn btn-secondary", role: "button" %></p>
+              <%= form_tag(find_path, method: 'get') do %>
+              <%= text_field_tag(:search, params[:search]) %>
+              <%= submit_tag("Search", name: nil) %>
+            <%end%>
           </div><!-- /.col-lg-4 -->
 
           <div class="col-lg-4 text-center">
