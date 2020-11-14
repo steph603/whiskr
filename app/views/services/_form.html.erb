@@ -1,3 +1,6 @@
+<div class="form-signin text-center container" >
+<%= image_tag("logo.png", class: "mb-4")%>
+<h2 class="h3 mb-3 font-weight-normal" >Enter details</h2>
 <%= form_with(model: service, local: true) do |form| %>
   <% if service.errors.any? %>
     <div id="error_explanation">
@@ -12,18 +15,15 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name , class: "form-control", placeholder: "Service name" %>
+  </div>
+  <div class="field">
+
+    <%= form.text_area :description, class: "form-control", placeholder: "Service Description"  %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
+    <%= form.text_field :price, class: "form-control", placeholder: "Price"  %>
   </div>
 
   <div class="actions">

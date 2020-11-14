@@ -1,7 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-
-<%= image_tag @pet.picture, class:"pet-image"  if @pet.picture.attached? %>
+<% if @pet.picture.attached? %>
+  <%= image_tag @pet.picture, class:"pet-image"  %>
+<%elsif @pet.species == "Dog" %>
+  <%= image_tag 'dog.png', class:"pet-image"%>
+<% elsif @pet.species =="Cat"%>
+  <%= image_tag 'cat.png', class:"pet-image"%>
+<%end%>
 <p>
   <strong>Name:</strong>
   <%= @pet.name %>

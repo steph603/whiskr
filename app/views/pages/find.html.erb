@@ -4,7 +4,11 @@
     <% @nurses.each do |nurse| %>
         <div class="nurse-card">
             <%= link_to profile_path(nurse) do%>
-            <%= image_tag nurse.picture, class:"pet-image"  if nurse.picture.attached? %>
+                <% if nurse.picture.attached? %>
+                    <%= image_tag nurse.picture, class:"pet-image" %>
+                <%else%>
+                    <%= image_tag 'nurse.png', class:"pet-image"%>
+                <%end%>
             <%= nurse.fname %><br>
             <p> From <%= nurse.address.suburb%>
             <%end%>

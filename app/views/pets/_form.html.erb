@@ -20,6 +20,11 @@
     <%= form.text_field :name, class: "form-control", placeholder: "Pet's name"  %>
   </div>
 
+    <div class="field">
+        <%= form.label :species %>
+  <%= form.select(:species, [['Cat', 'Cat'], ['Dog', 'Dog']])%>
+  </div>
+
  <br>
   <div class="field">
     <%= form.label "Show us a cute picture!"%>

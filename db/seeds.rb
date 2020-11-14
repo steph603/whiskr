@@ -10,8 +10,9 @@
     User.create(fname: Faker::Name.first_name, lname: Faker::Name.last_name, email: Faker::Internet.unique.email, password: 'password', is_nurse: true)
     User.create(fname: Faker::Name.first_name, lname: Faker::Name.last_name, email: Faker::Internet.unique.email, password: 'password', is_nurse: false)
 end
+
 30.times do
-    Pet.create(name: Faker::Creature::Cat.name, user_id: rand(3..25))
+    Pet.create(name: Faker::Creature::Cat.name, user_id: rand(0..21))
 end
 
 30.times do

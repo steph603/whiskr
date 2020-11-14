@@ -24,13 +24,14 @@
 <% end %>
 
 <% if can? :manage, @service %>
-<%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Add another service', new_service_path %> |
+<%= link_to 'Edit', edit_service_path(@service) %> 
+<%= link_to 'Add another service', new_service_path %>
+<%= link_to 'Back', my_profile_path %> 
 <%end%>
 
 <% if current_user.id != @service.user_id%>
 <%= render 'booking', service: @service %>
 <% end %>
 
-<%= link_to 'Back', :back %>
+
 </div>

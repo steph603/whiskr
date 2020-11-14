@@ -1,10 +1,12 @@
 
-<%# If user has a picture, display it, otherwise, display the default - could add male/female field and render different images%>
+<%# If user has a picture, display it, otherwise, display the default user/nurse image - could add male/female field and render different images%>
 
 <% if @user.picture.attached? %>
-    <%= image_tag @user.picture, class:"pet-image" %>
+    <%= image_tag @user.picture, class:"user-image" %>
+<%elsif @user.is_nurse?%>
+    <%= image_tag 'nurse.png', class:"user-image"%>   
 <%else%>
-    <%= image_tag 'user.png', class:"pet-image"%>
+    <%= image_tag 'user.png', class:"user-image"%>
 <%end%>
 
 <br>
@@ -25,26 +27,33 @@
     <%= @user.address.suburb%>
 <%end%>
 
-<% if @user.is_nurse?%>    
-    <table class="content-container">
-        <thead>
-            <th>Service</th>
-            <th>Description</th>
-            <th>Price</th>
-        <tbody>
-            <% @user.services.each do |service| %>
-                <tr>
-                    <td><%= service.name %></td>
-                    <td><%= service.description %></td>
-                    <td>$<%= service.price %>0</td>
-                    <td><%= link_to 'Show', service %></td>
-                    <% if can? :manage, service %>
-                        <td><%= link_to 'Edit', edit_service_path(service) %></td>
-                        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                    <%end%>  
-                </tr>
-            <%end%>  
-        </tbody>
-    </table>
-<%end%>
+    <% if @user.is_nurse? && @user.services.length > 0%>    
+        <table class="content-container">
+            <thead>
+                <th>Service</th>
+                <th>Description</th>
+                <th>Price</th>
+            <tbody>
+                <% @user.services.each do |service| %>
+                    <tr>
+                        <td><%= service.name %></td>
+                        <td><%= service.description %></td>
+                        <td>$<%= service.price %>0</td>
+                        <td><%= link_to 'Show', service %></td>
+                        <% if can? :manage, service %>  
+                            <td><%= link_to 'Edit', edit_service_path(service) %></td>
+                            <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                        <%end%>  
+                    </tr>
+                <%end%>  
+            </tbody>
+        </table>
+
+    <%elsif @user.is_nurse? && @user.services.length == 0%>
+        <p> No services listed yet!  </p>
+    <%end%>
+    <% if @user.is_nurse? %>  
+    <td> <%= link_to 'Create New Service', new_service_path %></td>
+    <%end%>
+
 

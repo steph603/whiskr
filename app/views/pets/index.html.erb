@@ -15,7 +15,13 @@
   The current user is <%= current_user.fname %>
     <% @pets.each do |pet| %>
       <tr>
-        <td><%= image_tag pet.picture, class:"pet-image" if pet.picture.attached? %></td>
+        <td><% if pet.picture.attached? %>
+  <%= image_tag pet.picture, class:"pet-image"  %>
+<%elsif pet.species == "Dog" %>
+  <%= image_tag 'dog.png', class:"pet-image"%>
+<% elsif pet.species =="Cat"%>
+  <%= image_tag 'cat.png', class:"pet-image"%>
+<%end%></td>
         <td><%= pet.name %></td>
         <td><%= pet.user.fname %></td>
         <td><%= link_to 'Show', pet %></td>
