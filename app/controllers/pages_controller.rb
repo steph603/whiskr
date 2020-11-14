@@ -1,4 +1,10 @@
 class PagesController < ApplicationController
+  before_action :set_user, only: [:profile]
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+  
   def home
   end
 
@@ -30,6 +36,10 @@ class PagesController < ApplicationController
     }
   end
   
+  def profile
+  end
+
+
   def about
   end
 end

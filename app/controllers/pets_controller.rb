@@ -48,6 +48,12 @@ class PetsController < ApplicationController
     end
   end
 
+  def pet_params
+    params.require(:pet).permit(:name, :user_id, :picture)
+  end
+
+
+
   # PATCH/PUT /pets/1
   # PATCH/PUT /pets/1.json
   def update

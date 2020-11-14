@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/find', to: 'pages#find'
   get '/my_services', to: 'services#my_services'
   root to: 'pages#home'
+  get 'profile/:id', to: 'pages#profile', :as => :profile
 
   get 'success/', to: 'bookings#success' 
 
