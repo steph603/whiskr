@@ -1,0 +1,168 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+/* 
+font-family: 'Lato', sans-serif;
+font-family: 'Sacramento', cursive; */
+
+/* #EAEAEB - Platinum
+#C5C3C6 - Silver
+#1D1E20 - Eerie Black
+#4c5C68 - Black Coral
+#1985A1 - Blue Munsell */
+
+
+@import "bootstrap";
+@import "pets";
+@import "pages";
+@import "services";
+
+.content-container {
+  margin-top: 100px;
+  margin-left: 70px;
+}
+
+.title {
+    font-size: 200px;
+    font-family: 'Sacramento', cursive; 
+    position: absolute;
+    top: 70px;
+    left: 50px;
+    color: #C5C3C6;
+    text-shadow: 3px 3px #4c5C68; 
+    margin-bottom: 60px;
+}
+
+.featurette {
+  margin: 10px 0px;
+  padding: 10px 0px;
+}
+.f1 {
+  background-color: #eaeaeb71;
+}
+
+.topnav {
+    background-color: #1985A1;
+    opacity: 80%;
+    a {
+        color: #1D1E20;
+        text-decoration: none;
+        padding: 6px; 
+        transition: .15s ease-in-out;
+        font-size: 20px;}
+      
+      a:visited {
+        color: #1D1E20; }
+      
+      a:hover {
+        color: #4c5C68;
+       }
+  }
+
+  .spot {
+    height: 140px;
+    width: 140px;
+  }
+
+  .spread {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .col-img {
+    padding-right: 15px;
+  }
+
+  body {
+    background-color: #fff;
+    color: #1D1E20;
+    margin: 0px; 
+    }
+  
+  body, p, ol, ul, td, h2, h3, h4, h5 {
+    font-family: 'Lato', 'Arial', 'Helvetica', sans-serif;
+  }
+
+  p {
+    font-size: 20px;
+  }
+  
+  pre {
+    background-color: #eee;
+    padding: 10px;
+    font-size: 11px; }
+  
+  a {
+    color: #1D1E20;
+    text-decoration: none;
+
+    transition: .3s ease-in-out;
+    font-size: 20px; }
+  
+  a:visited {
+    color: #1D1E20; }
+  
+  a:hover {
+    color: #4c5C68;
+   }
+  
+  th {
+    padding-bottom: 5px; }
+  
+  td {
+    padding: 0 5px 7px; }
+  
+  div.field,
+  div.actions {
+    margin-bottom: 10px; }
+  
+  // h1 {
+  //   font-family: 'Sacramento', cursive; 
+  //   font-size: 200px;
+  //   margin-bottom: 60px;
+  // }
+  
+  #notice {
+    color: green; }
+  
+  .field_with_errors {
+    padding: 2px;
+    background-color: red;
+    display: table; }
+  
+  #error_explanation {
+    width: 450px;
+    border: 2px solid red;
+    padding: 7px 7px 0;
+    margin-bottom: 20px;
+    background-color: #f0f0f0; }
+  
+  #error_explanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px -7px 0;
+    background-color: #c00;
+    color: #fff; }
+  
+  #error_explanation ul li {
+    font-size: 12px;
+    list-style: square; }
+  
+  label {
+    display: block; }
+  
+    
+  
