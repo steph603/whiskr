@@ -16,11 +16,11 @@
 <% if @user == current_user %>
     <p>
         <strong>Address:</strong><br>
-        <%= @address.street %><br>
-        <%= @address.suburb %>,
-        <%= @address.state %>
+        <%= @user.address.street %><br>
+        <%= @user.address.suburb %>,
+        <%= @user.address.state %>
     </p>
-    <%= link_to 'Edit', edit_address_path(@address) %> 
+    <%= link_to 'Edit', edit_address_path(@user.address) %> 
 </div>
 
 <% else %>
@@ -28,7 +28,7 @@
 <%end%>
 
     <% if @user.is_nurse? && @user.services.length > 0%>    
-        <table class="content-container">
+        <table class="table">
             <thead>
                 <th>Service</th>
                 <th>Description</th>
@@ -50,10 +50,13 @@
         </table>
 
     <%elsif @user.is_nurse? && @user.services.length == 0%>
+    <div class="content-container">
         <p> No services listed yet!  </p>
     <%end%>
-    <% if @user.is_nurse? %>  
-    <td> <%= link_to 'Create New Service', new_service_path %></td>
+    <% if @user.is_nurse? && @user == current_user %>  
+    <%= link_to 'Create New Service', new_service_path %>
+     <%= link_to 'Edit Login Details', edit_user_registration_path %>
     <%end%>
+    </div>
 
 

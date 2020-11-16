@@ -16,19 +16,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
     <%= form.text_field :name, class: "form-control", placeholder: "Pet's name"  %>
   </div>
 
-    <div class="field">
-        <%= form.label :species %>
-  <%= form.select(:species, [['Cat', 'Cat'], ['Dog', 'Dog']])%>
+  <div class="field">
+    <%= form.select(:species, [['Cat', 'Cat'], ['Dog', 'Dog']], { :prompt => "Species"}, { :class => "form-control"}) %>
+
   </div>
 
  <br>
   <div class="field">
     <%= form.label "Show us a cute picture!"%>
-    <%= form.file_field :picture, accept: 'image/png, image/jpg, image/jpeg' %>
+    <%= form.file_field :picture, accept: 'image/png, image/jpg, image/jpeg', class: "form-control-file" %>
   </div>
   <br>
 

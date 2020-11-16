@@ -1,8 +1,9 @@
+<div class="content-container">
 <p id="notice"><%= notice %></p>
 
 <h2>Bookings</h2>
 
-<table>
+<table class="table">
   <thead>
     <tr>
 
@@ -19,7 +20,7 @@
 
         <td><%= booking.service.name %></td>
         <td><%= booking.service.user.fname %></td>
-        <td>$<%= booking.service.price %>0</td>
+        <td><%= number_to_currency(booking.service.price) %></td>
         <td><%= link_to 'Remove from Cart', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -41,4 +42,5 @@
     <%else%>
     <h2> There is nothing in your cart! </h2>
 <%end%>
-<br>
+
+</div>

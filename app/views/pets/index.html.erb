@@ -1,37 +1,31 @@
+<div class="content-container">
+
 <p id="notice"><%= notice %></p>
 
 <h1>Pets</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-  The current user is <%= current_user.fname %>
-    <% @pets.each do |pet| %>
-      <tr>
-        <td><% if pet.picture.attached? %>
-  <%= image_tag pet.picture, class:"pet-image"  %>
-<%elsif pet.species == "Dog" %>
-  <%= image_tag 'dog.png', class:"pet-image"%>
-<% elsif pet.species =="Cat"%>
-  <%= image_tag 'cat.png', class:"pet-image"%>
-<%end%></td>
-        <td><%= pet.name %></td>
-        <td><%= pet.user.fname %></td>
-        <td><%= link_to 'Show', pet %></td>
-        <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
-        <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+  <div class="card-container">
+      <% @pets.each do |pet| %>
+      <%= link_to pet do%>
+          <div class="prof-card">
+              <div class="card-body">
+                  <% if pet.picture.attached? %>
+                    <%= image_tag pet.picture, class:"pet-image"  %>
+                  <%elsif pet.species == "Dog" %>
+                    <%= image_tag 'dog.png', class:"pet-image"%>
+                  <% elsif pet.species =="Cat"%>
+                    <%= image_tag 'cat.png', class:"pet-image"%>
+                  <%end%>
+              </div>
+              <div class="card-body">
+                  <h5 class="card-title"><%= pet.name %></h5>
+                  <p><%= pet.species%></p>
+              </div>
+          </div>
+          <%end%>
+      <%end%>
+  </div>
 
 <%= link_to 'New Pet', new_pet_path %>
+
+</div>

@@ -14,6 +14,10 @@
 
   <%= form.hidden_field :service_id, value: @service.id %>
 
+  <div class="field">
+    <%= form.select(:species, [['Cat', 'Cat'], ['Dog', 'Dog']], { :prompt => "Book this service for..."}, { :class => "form-control"}) %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

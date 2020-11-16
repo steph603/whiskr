@@ -1,7 +1,7 @@
 class ServicesController < ApplicationController
   load_and_authorize_resource
   before_action :set_service, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :my_services]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :my_services, :show]
   # GET /services
   # GET /services.json
 

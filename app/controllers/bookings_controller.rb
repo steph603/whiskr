@@ -15,6 +15,20 @@ class BookingsController < ApplicationController
       @prices << booking.service.price
       end 
     }
+
+    # def index
+
+    #   @prices = []
+    #   @bookings = []
+    #   @all_bookings = Booking.all.where(:user_id == current_user.id)
+    #   @all_bookings.each { |booking | 
+    #     if !booking.paid
+    #     @bookings << booking
+    #     @prices << booking.service.price
+    #     end 
+    #   }
+
+
     if @prices.sum > 0
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],

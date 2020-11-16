@@ -1,25 +1,32 @@
-<h2> Come here to find a nurse </h2>
+<div class="content-container">
+    <% if @nurses.length > 0 %>
+        <h2> Here are all the nurses near you... </h2>
 
-<div class="card-container">
-    <% @nurses.each do |nurse| %>
-        <div class="nurse-card">
+        <div class="card-container">
+            <% @nurses.each do |nurse| %>
             <%= link_to profile_path(nurse) do%>
-                <% if nurse.picture.attached? %>
-                    <%= image_tag nurse.picture, class:"pet-image" %>
-                <%else%>
-                    <%= image_tag 'nurse.png', class:"pet-image"%>
+                <div class="prof-card">
+                    <div class="card-body">
+                        <% if nurse.picture.attached? %>
+                            <%= image_tag nurse.picture, class:"user-image" %>
+                        <%else%>
+                            <%= image_tag 'nurse.png', class:"user-image"%>
+                        <%end%>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= nurse.fname %></h5>
+                        <p> From <%= nurse.address.suburb%></p>
+                    </div>
+                </div>
                 <%end%>
-            <%= nurse.fname %><br>
-            <p> From <%= nurse.address.suburb%>
             <%end%>
         </div>
-    <%end%>
- 
-<% if @nurses.length == 0 %>
-<p> Sorry... No results found...
-Please try again </p>
-       <%= form_tag(find_path, method: 'get') do %>
-            <%= text_field_tag(:search, params[:search]) %>
-            <%= submit_tag("Search", name: nil) %>
-        <%end%> </p>
-<% end %>
+
+    <% else %>
+        <p> Sorry... No results found... Please try again </p>
+            <%= form_tag(find_path, method: 'get') do %>
+                <%= text_field_tag(:search, params[:search]) %>
+                <%= submit_tag("Search", name: nil) %>
+        <%end%>
+    <% end %>
+</div>

@@ -13,7 +13,7 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @service.price %>
+  <%= number_to_currency(@service.price) %>
 </p>
 
 <% if current_user.id != @service.user_id%>
@@ -30,6 +30,7 @@
 <%end%>
 
 <% if current_user.id != @service.user_id%>
+
 <%= render 'booking', service: @service %>
 <% end %>
 

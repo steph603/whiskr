@@ -10,6 +10,11 @@
   <%= @booking.service.name %>
 </p>
 
+<p>
+  <strong>Service:</strong>
+  <%= number_to_currency(@booking.service.price) %>
+</p>
+
 
 <%= link_to 'Checkout Now', bookings_path %><br>
 <%= link_to 'Back to Nurse Profile', profile_path(@booking.service.user_id) %>

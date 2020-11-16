@@ -1,3 +1,6 @@
+<%# I don't think I need this page!
+ %>
+
 <p id="notice"><%= notice %></p>
 
 <h2>Services</h2>
@@ -18,7 +21,7 @@
       <tr>
         <td><%= service.name %></td>
         <td><%= service.description %></td>
-        <td><%= service.price %></td>
+        <td><%= number_to_currency(service.price) %></td>
         <td><%= service.user.fname %></td>
         <td><%= link_to 'Show', service %></td>
         
