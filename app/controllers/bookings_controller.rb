@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
 
     @prices = []
     @bookings = []
-    @all_bookings = Booking.includes(:user, :service).all
+    @all_bookings = Booking.includes(:user, :service, :pet).all
     @all_bookings.each { |booking | 
       if booking.user_id == current_user.id && !booking.paid
       @bookings << booking
@@ -43,7 +43,7 @@ class BookingsController < ApplicationController
   def success 
     @prices = []
     @bookings = []
-    @all_bookings = Booking.all
+    @all_bookings = Booking.includes(:user).all
     @all_bookings.each { |booking | 
       if booking.user_id == current_user.id
       @bookings << booking

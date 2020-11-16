@@ -11,7 +11,7 @@ class ServicesController < ApplicationController
 
 
   def my_services
-    @allservices = Service.all
+    @allservices = Service.includes(:user).all
     @services = []
     
     @allservices.each { |service| 
@@ -26,7 +26,7 @@ class ServicesController < ApplicationController
   def show
     @booking = Booking.new
     @my_pets = []
-    @pets = Pet.all
+    @pets = Pet.includes(:user).all
     @pets.each { |pet| 
       if pet.user_id == current_user.id
         @my_pets << pet 

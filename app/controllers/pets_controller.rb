@@ -6,7 +6,7 @@ class PetsController < ApplicationController
   # GET /pets
   # GET /pets.json
   def index
-    @allpets = Pet.all
+    @allpets = Pet.includes(:user).all
     @pets = []
     
     @allpets.each { |pet| 

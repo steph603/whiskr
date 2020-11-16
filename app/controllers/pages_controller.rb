@@ -10,17 +10,6 @@ class PagesController < ApplicationController
   def home
   end
 
-  def checkout
-    @all_bookings = Booking.all
-    @lines = []
-
-    @all_bookings.each { |b|
-      if b.user_id == current_user.id
-      @lines << b 
-      end
-      }
-      
-  end
 
   # This method returns nurses within 20km(?) of the suburb searched for
   def find
@@ -29,7 +18,7 @@ class PagesController < ApplicationController
       @matches << address.user_id
     }
     @nurses = []
-    @users = User.all
+    @users = User.includes(:address).all
     @matches.each { |match| 
       @users.each { |user|
       if user.is_nurse && user.id == match
