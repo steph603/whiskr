@@ -45,12 +45,10 @@ font-family: 'Sacramento', cursive; */
 }
 
 .featurette {
-  margin: 10px 0px;
+  margin: 20px 0px;
   padding: 10px 0px;
 }
-.f1 {
-  background-color: #eaeaeb71;
-}
+
 
 .topnav {
     background-color: #1985A1;
@@ -164,5 +162,18 @@ font-family: 'Sacramento', cursive; */
   label {
     display: block; }
   
-    
+    .col-lg-4 {
+      margin: 15px 0px;
+    }
   
+  .credits {
+    font-size: 12px;
+    margin-left: 15px;
+    a {
+      font-size: 12px;
+    }
+  }
+
+  .odd {
+    background-color: #eaeaeb71;
+  }
