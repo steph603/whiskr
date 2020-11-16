@@ -15,7 +15,9 @@
 
   <% if can? :manage, @pet %>
   <%= link_to 'Edit', edit_pet_path(@pet) %>
-  <%= link_to "I no longer have #{@pet.name}", @pet, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <%end%>
+  <br>
+  <%= link_to "Remove #{@pet.name}", @pet, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <br>
+  <%end%>
   <%= link_to 'Back', pets_path %>
 </div>

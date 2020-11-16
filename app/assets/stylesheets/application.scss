@@ -78,4 +78,11 @@ font-family: 'Sacramento', cursive; */
     width: 140px;
   }
 
-  
+  .spread {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .col-img {
+    padding-right: 15px;
+  }
