@@ -22,9 +22,13 @@
         </div>
 
     <% else %>
-        <p> Sorry... No results found... Please try again </p>
-            <%= form_tag(find_path, method: 'get') do %>
-                <%= text_field_tag(:search, params[:search]) %>
-                <%= submit_tag("Search", name: nil) %>
-        <%end%>
+        <p> Sorry... No results found...<br> Try searching nearby suburbs or your city. </p>
+            <div class="input-group mb-8">
+                    <%= form_tag(find_path, method: 'get') do %>
+                    <div class="input-group-append">
+                        <%= text_field_tag(:search, params[:search], class: "form-control") %>
+                        <%= submit_tag("Search", class: "input-group-text", id: "basic-addon2") %>
+                        <% end %>
+            </div>
+                    </div>
     <% end %>
