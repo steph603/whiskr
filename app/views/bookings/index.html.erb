@@ -9,6 +9,7 @@
 
       <th>Service</th>
       <th>Nurse</th>
+      <th>Booked For</th>
       <th>Price</th>
       <th colspan="3"></th>
     </tr>
@@ -20,6 +21,7 @@
 
         <td><%= booking.service.name %></td>
         <td><%= booking.service.user.fname %></td>
+        <td><%= booking.pet.name rescue nil %></td>
         <td><%= number_to_currency(booking.service.price) %></td>
         <td><%= link_to 'Remove from Cart', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

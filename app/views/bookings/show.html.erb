@@ -1,9 +1,7 @@
+
+<div class="content-container">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @booking.user_id %>
-</p>
 
 <p>
   <strong>Service:</strong>
@@ -11,10 +9,21 @@
 </p>
 
 <p>
-  <strong>Service:</strong>
+  <strong>Nurse:</strong>
+  <%= @booking.service.user.fname %>
+</p>
+
+<p>
+  <strong>Booked For:</strong>
+  <%= @booking.pet.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
   <%= number_to_currency(@booking.service.price) %>
 </p>
 
 
 <%= link_to 'Checkout Now', bookings_path %><br>
 <%= link_to 'Back to Nurse Profile', profile_path(@booking.service.user_id) %>
+</div>

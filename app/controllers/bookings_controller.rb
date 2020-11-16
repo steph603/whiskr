@@ -8,25 +8,13 @@ class BookingsController < ApplicationController
 
     @prices = []
     @bookings = []
-    @all_bookings = Booking.all
+    @all_bookings = Booking.includes(:user, :service).all
     @all_bookings.each { |booking | 
       if booking.user_id == current_user.id && !booking.paid
       @bookings << booking
       @prices << booking.service.price
       end 
     }
-
-    # def index
-
-    #   @prices = []
-    #   @bookings = []
-    #   @all_bookings = Booking.all.where(:user_id == current_user.id)
-    #   @all_bookings.each { |booking | 
-    #     if !booking.paid
-    #     @bookings << booking
-    #     @prices << booking.service.price
-    #     end 
-    #   }
 
 
     if @prices.sum > 0
@@ -73,6 +61,9 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
+
+  
+
   end
 
   # GET /bookings/1/edit

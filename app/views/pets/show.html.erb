@@ -1,24 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="content-container">
+  <p id="notice"><%= notice %></p>
 
-<% if @pet.picture.attached? %>
-  <%= image_tag @pet.picture, class:"pet-image"  %>
-<%elsif @pet.species == "Dog" %>
-  <%= image_tag 'dog.png', class:"pet-image"%>
-<% elsif @pet.species =="Cat"%>
-  <%= image_tag 'cat.png', class:"pet-image"%>
-<%end%>
-<p>
-  <strong>Name:</strong>
-  <%= @pet.name %>
-</p>
+  <% if @pet.picture.attached? %>
+    <%= image_tag @pet.picture, class:"pet-image"  %>
+  <%elsif @pet.species == "Dog" %>
+    <%= image_tag 'dog.png', class:"pet-image"%>
+  <% elsif @pet.species =="Cat"%>
+    <%= image_tag 'cat.png', class:"pet-image"%>
+  <%end%>
+  <p>
+    <strong>Name:</strong>
+    <%= @pet.name %>
+  </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @pet.user_id %>
-</p>
-
-<% if can? :manage, @pet %>
-<%= link_to 'Edit', edit_pet_path(@pet) %> |
-<%end%>
-<%= link_to 'Add Another Pet', new_pet_path %>
-<%= link_to 'Back', pets_path %>
+  <% if can? :manage, @pet %>
+  <%= link_to 'Edit', edit_pet_path(@pet) %>
+  <%= link_to "I no longer have #{@pet.name}", @pet, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%end%>
+  <%= link_to 'Back', pets_path %>
+</div>

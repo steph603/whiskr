@@ -25,6 +25,13 @@ class ServicesController < ApplicationController
   # GET /services/1.json
   def show
     @booking = Booking.new
+    @my_pets = []
+    @pets = Pet.all
+    @pets.each { |pet| 
+      if pet.user_id == current_user.id
+        @my_pets << pet 
+      end
+    }
   end
 
   # GET /services/new
