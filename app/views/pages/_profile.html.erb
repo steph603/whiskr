@@ -9,11 +9,11 @@
     <%= image_tag 'user.png', class:"user-image"%>
 <%end%>
 
-<br>
-<h2>
-<%= @user.fname %> <%= @user.lname%>
-</h2>
-<br>
+    <br>
+    <h2>
+    <%= @user.fname %> <%= @user.lname%>
+    </h2>
+    <br>
 
 <% if @user == current_user %>
     <p>
@@ -23,7 +23,6 @@
         <%= @user.address.state %>
     </p>
     <%= link_to 'Edit Address', edit_address_path(@user.address) %> 
-</div>
 
 <% else %>
     <%= @user.address.suburb%>
@@ -52,13 +51,13 @@
         </table>
 
     <%elsif @user.is_nurse? && @user.services.length == 0%>
-    <div class="content-container">
+<div class="content-container">
         <p> No services listed yet!  </p>
     <%end%>
     <% if @user.is_nurse? && @user == current_user %>  
     <%= link_to 'Create New Service', new_service_path %><br>
      <%= link_to 'Edit Login Details', edit_user_registration_path %>
     <%end%>
-    </div>
+</div>
 
 

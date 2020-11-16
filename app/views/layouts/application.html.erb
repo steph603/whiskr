@@ -13,12 +13,12 @@
   <body>
 
     <%=render "shared/navbar"%> 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
     <% unless params[:action] == 'home' %>
-
+          <p class="notice"><%= notice %></p>
+         <p class="alert"><%= alert %></p>
       <div class="content-container">
+
         <%= yield %>
       </div>
 
