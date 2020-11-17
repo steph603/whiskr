@@ -17,8 +17,10 @@
   <%= form.hidden_field :service_id, value: @service.id %>
 
 
-  <div class="field">
-    <%= form.collection_select(:pet_id, @my_pets, :id, :name)%>
+  <div class="field col-6">
+
+    <%= form.collection_select(:pet_id, @my_pets, :id, :name, { :prompt => "Book for..."}, { :class => "form-control"})%>
+
   </div>
 
   <div class="actions">
