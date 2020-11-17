@@ -1,8 +1,10 @@
 
-<div class="content-container">
+
 <p id="notice"><%= notice %></p>
 
-
+  <% if @booking.pet.picture.attached? %>
+    <%= image_tag @booking.pet.picture, class:"pet-image"  %>
+    <%end%>
 <p>
   <strong>Service:</strong>
   <%= @booking.service.name %>
@@ -26,4 +28,3 @@
 
 <%= link_to 'Checkout Now', bookings_path %><br>
 <%= link_to 'Back to Nurse Profile', profile_path(@booking.service.user_id) %>
-</div>

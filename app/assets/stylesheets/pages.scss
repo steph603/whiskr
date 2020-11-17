@@ -44,3 +44,36 @@
     border-radius: 20px;
     margin: 10px;
 }
+
+.services-header {
+    margin-top: 30px;
+}
+
+.services-list {
+    max-width: 80%;
+    a {
+        color: #1D1E20;
+        text-decoration: none;
+        padding: 6px; 
+        transition: .15s ease-in-out;
+        font-size: 16px;}
+      
+      a:visited {
+        color: #1D1E20; }
+    
+}
+
+.service {
+    background-color: #eaeaeb;
+    border-radius: 15px;
+    padding: 10px;
+
+}
+
+.service:hover {
+    background-color: #eaeaeb50;
+}
+
+.table-wrapper {
+    max-width: 70%;
+}

@@ -6,7 +6,7 @@ class ServicesController < ApplicationController
   # GET /services.json
 
   def index 
-    @services = Service.all
+    redirect_to :root
   end
 
 

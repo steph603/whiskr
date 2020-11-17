@@ -30,33 +30,47 @@
 <%end%>
 
     <% if @user.is_nurse? && @user.services.length > 0%>    
-        <table class="table">
-            <thead>
-                <th>Service</th>
-                <th>Description</th>
-                <th>Price</th>
-            <tbody>
-                <% @user.services.each do |service| %>
-                    <tr>
-                        <td><%= service.name %></td>
-                        <td><%= service.description %></td>
-                        <td>$<%= service.price %>0</td>
-                        <td><%= link_to 'Show', service %></td>
-                        <% if can? :manage, service %>  
-                            <td><%= link_to 'Edit', edit_service_path(service) %></td>
-                            <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                        <%end%>  
-                    </tr>
-                <%end%>  
-            </tbody>
-        </table>
+
+<div class="services-list">
+  <div class="services-header row mb-3">
+    <div class="col-md-3">
+      <strong>Service</strong>
+    </div>
+    <div class="col-md-6">
+      <strong>Description</strong>
+    </div>
+    <div class="col-md-3">
+      <strong>Price</strong>
+    </div>
+  </div>
+
+<% @user.services.each do |service| %>
+  <%= link_to service do %>
+      <div class="row mb-3 service">
+        <div class="col-md-3">
+          <%= service.name %>
+        </div>
+        <div class="col-md-6">
+          <%= service.description %>
+        </div>
+        <div class="col-md-3">
+          <%= number_to_currency(service.price) %>
+      </div>
+  </div>
+    <%end%>
+  <% end %>
+</div>
+
+
+
 
     <%elsif @user.is_nurse? && @user.services.length == 0%>
 <div class="content-container">
         <p> No services listed yet!  </p>
     <%end%>
     <% if @user.is_nurse? && @user == current_user %>  
-    <%= link_to 'Create New Service', new_service_path %><br>
+      <%= link_to 'New Service', new_service_path, class: "btn btn-outline-info btn-lg" %>
+
     <%end%>
 </div>
 
