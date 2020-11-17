@@ -1,34 +1,56 @@
 <h2>Bookings</h2>
 
-<div class="table-wrapper">
-<table class="table">
-  <thead>
-    <tr>
+<div class="services-list">
+  <div class="services-header row mb-3">
+    <div class="col-md-3">
+      <strong>Service</strong>
+    </div>
+    <div class="col-md-3">
+      <strong>Nurse</strong>
+    </div>
+        <div class="col-md-3">
+      <strong>Booked For</strong>
+    </div>
+    <div class="col-md-3">
+      <strong>Price</strong>
+    </div>
+        <div class="col-md-3">
+     
+    </div>
+  </div>
 
-      <th>Service</th>
-      <th>Nurse</th>
-      <th>Booked For</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @bookings.each do |booking| %>
+ 
+      <div class="row mb-3 service">
+        <div class="col-md-3">
+          <%= booking.service.name %>
+        </div>
+        <div class="col-md-3">
+          <%= booking.service.user.fname %>
+        </div>
+        <div class="col-md-3">
+          <%= booking.pet.name rescue nil %>
+        </div>
+        <div class="col-md-3">
+          <%= number_to_currency(booking.service.price) %>
+               <%= link_to booking, method: :delete, data: { confirm: 'Delete this Booking?' }  do %>
+              <%= image_tag 'cancel.png', class: "cancel"%>
+              <%end%>
+      </div>
+              <div class="col-md-3">
 
-  <tbody>
-    <% @bookings.each do |booking| %>
-      <tr>
+      </div>
+  </div>
 
-        <td><%= booking.service.name %></td>
-        <td><%= booking.service.user.fname %></td>
-        <td><%= booking.pet.name rescue nil %></td>
-        <td><%= number_to_currency(booking.service.price) %></td>
-        <td><%= link_to 'Remove from Cart', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% end %>
+</div>
+
+
+
 
 <% if user_signed_in? && @prices.sum > 0 %>
     <button data-stripe="payment", class="btn btn-primary">Pay Now</button>
+    <%= link_to 'Cancel', :root, class: "btn btn-primary" %>
     
     <script src="https://js.stripe.com/v3/"></script>
     <script>
@@ -44,4 +66,4 @@
 <%end%>
 </div>
 <br>
-<%= link_to 'Cancel', :root %>
+
