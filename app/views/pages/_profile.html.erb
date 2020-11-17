@@ -18,9 +18,9 @@
 <% if @user == current_user %>
     <p>
         <strong>Address:</strong><br>
-        <%= @user.address.street %><br>
-        <%= @user.address.suburb %>,
-        <%= @user.address.state %>
+        <%= @user.address.street rescue nil%><br>
+        <%= @user.address.suburb rescue nil%>,
+        <%= @user.address.state rescue nil%>
     </p>
     <%= link_to 'Edit Address', edit_address_path(@user.address) %> 
 
