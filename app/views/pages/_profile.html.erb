@@ -22,10 +22,10 @@
         <%= @user.address.suburb rescue nil%>,
         <%= @user.address.state rescue nil%>
     </p>
-    <%= link_to 'Edit Address', edit_address_path(@user.address) %> 
+    <%= link_to 'Edit Address', edit_address_path(@user.address) rescue nil %> 
 
 <% else %>
-    <%= @user.address.suburb%>
+    <%= @user.address.suburb rescue nil%>
 <%end%>
 
     <% if @user.is_nurse? && @user.services.length > 0%>    
