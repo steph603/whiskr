@@ -20,7 +20,7 @@
             <%= link_to "Sign Out", :destroy_user_session, method: "delete" %>
         <% end %>
 
-        <div class="input-group mb-3">
+        <div class="input-group mb-3 nav-search">
             <%= form_tag(find_path, method: 'get') do %>
             <div class="input-group-append">
                 <%= text_field_tag(:search, params[:search], class: "form-control", placeholder: "Suburb") %>
