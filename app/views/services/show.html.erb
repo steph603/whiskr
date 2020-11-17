@@ -1,34 +1,36 @@
 
-<p>
-  <strong>Name:</strong>
-  <%= @service.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @service.description %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @service.name %>
+  </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= number_to_currency(@service.price) %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @service.description %>
+  </p>
 
-<% if current_user.id != @service.user_id%>
-<p>
-  <strong>Service offered by:</strong>
-  <%= @service.user.fname %>
-</p>
-<% end %>
+  <p>
+    <strong>Price:</strong>
+    <%= number_to_currency(@service.price) %>
+  </p>
 
-<% if can? :manage, @service %>
-<%= link_to 'Edit', edit_service_path(@service) %> <br>
-<%= link_to 'Add another service', new_service_path %><br>
-<%= link_to 'Back', my_profile_path %> <br>
-<%end%>
+  <% if current_user.id != @service.user_id%>
+  <p>
+    <strong>Service offered by:</strong>
+    <%= @service.user.fname %>
+  </p>
+  <% end %>
 
-<% if current_user.id != @service.user_id%>
+  <% if can? :manage, @service %>
+  <%= link_to 'Edit', edit_service_path(@service) %> <br>
+  <%= link_to 'Add another service', new_service_path %><br>
+  <%= link_to 'Back', my_profile_path %> <br>
+  <%end%>
 
-<%= render 'booking', service: @service %>
-<%= link_to 'Back', :back %> <br>
-<% end %>
+  <% if current_user.id != @service.user_id%>
+<div class="show-service">
+  <%= render 'booking', service: @service %>
+</div>
+  <%= link_to 'Back', :back %> <br>
+  <% end %>
