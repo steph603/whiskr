@@ -24,8 +24,8 @@
   </div>
 
   <div class="field">
-  <%= form.select(:state, [['New South Wales', 'NSW'], ['Victoria', 'VIC'], ['Queensland', 'QLD'], ['South Australia', 'SA'], ['Tasmania', 'TAS'], ['Western Australia', 'WA']])%>
-    <%# <%= form.select :state, options_for_select["NSW", "VIC", "QLD", "NT", "TAS", "ACT"] %> 
+  <%= form.select(:state, [['New South Wales', 'NSW'], ['Victoria', 'VIC'], ['Queensland', 'QLD'], ['South Australia', 'SA'], ['Tasmania', 'TAS'], ['Western Australia', 'WA']], { :prompt => "Species"}, { :class => "form-control"})%>
+
   </div>
 
   <div class="actions">

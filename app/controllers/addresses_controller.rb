@@ -2,16 +2,16 @@ class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-
   # GET /addresses
   # GET /addresses.json
   def index
-    @addresses = Address.all
+    redirect_to root_path
   end
 
   # GET /addresses/1
   # GET /addresses/1.json
   def show
+    redirect_to root_path
   end
 
   # GET /addresses/new
