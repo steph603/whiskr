@@ -15,8 +15,10 @@
     <%=render "shared/navbar"%> 
 
     <% unless params[:action] == 'home' %>
-          <p class="notice"><%= notice %></p>
-         <p class="alert"><%= alert %></p>
+      <div class="notifications">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
       <div class="content-container">
 
         <%= yield %>
