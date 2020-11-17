@@ -8,7 +8,7 @@ class Ability
     #
       user ||= User.new # guest user (not logged in)
       can :manage, Address, user_id: user.id
-      can :read, :all
+      can :read, Service
       can :read, :Address, user_id: user.id
         if user.is_nurse?
           can :manage, Service, user_id: user.id
