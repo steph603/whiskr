@@ -22,7 +22,8 @@
         <%= @user.address.suburb rescue nil%>,
         <%= @user.address.state rescue nil%>
     </p>
-    <%= link_to 'Edit Address', edit_address_path(@user.address) rescue nil %> 
+    <%= link_to 'Edit Address', edit_address_path(@user.address) rescue nil %> <br>
+    <%= link_to 'Edit Login Details', edit_user_registration_path %>
 
 <% else %>
     <%= @user.address.suburb rescue nil%>
@@ -56,7 +57,6 @@
     <%end%>
     <% if @user.is_nurse? && @user == current_user %>  
     <%= link_to 'Create New Service', new_service_path %><br>
-     <%= link_to 'Edit Login Details', edit_user_registration_path %>
     <%end%>
 </div>
 
