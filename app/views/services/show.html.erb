@@ -30,4 +30,5 @@
 <% if current_user.id != @service.user_id%>
 
 <%= render 'booking', service: @service %>
+<%= link_to 'Back', :back %> <br>
 <% end %>
