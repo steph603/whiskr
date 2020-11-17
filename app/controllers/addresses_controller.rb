@@ -29,7 +29,6 @@ class AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     @address.user_id = current_user.id
-    code_address
     respond_to do |format|
       if @address.save
         format.html { redirect_to new_pet_path, notice: 'Address was successfully created.' }
@@ -71,13 +70,12 @@ class AddressesController < ApplicationController
       @address = Address.find(params[:id])
     end
 
-    def code_address
-      @address.address = "#{@address.suburb}, #{@address.state}"
-    end
+    # def code_address
+    #   @address.address = "#{@address.suburb}, #{@address.state}"
+    # end
 
     # Only allow a list of trusted parameters through.
     def address_params 
-      code_address
       params.require(:address).permit(:user_id, :street, :suburb, :state, :latitude, :longitude)
     end
 end
