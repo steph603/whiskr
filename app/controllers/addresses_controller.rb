@@ -70,10 +70,6 @@ class AddressesController < ApplicationController
       @address = Address.find(params[:id])
     end
 
-    # def code_address
-    #   @address.address = "#{@address.suburb}, #{@address.state}"
-    # end
-
     # Only allow a list of trusted parameters through.
     def address_params 
       params.require(:address).permit(:user_id, :street, :suburb, :state, :latitude, :longitude)
