@@ -1,3 +1,5 @@
+ <%# Look at Ransack gem for searching & sorting results, may also allow me to use paginate! %>
+ 
  <% if @nurses.length > 0 %>
         <h2> Here are all the nurses near you... </h2>
 
@@ -29,6 +31,6 @@
                         <%= text_field_tag(:search, params[:search], class: "form-control", placeholder: "Suburb") %>
                         <%= submit_tag("Search", class: "input-group-text", id: "basic-addon2") %>
                         <% end %>
+                     </div>
             </div>
-                    </div>
     <% end %>
