@@ -1,11 +1,13 @@
  <%# Look at Ransack gem for searching & sorting results, may also allow me to use paginate! %>
- 
+ <%# Displays the results for nurses in your searched area if there
+ are any, otherwise, prompt the user to try again %>
+
  <% if @nurses.length > 0 %>
         <h2> Here are all the nurses near you... </h2>
 
         <div class="card-container">
             <% @nurses.each do |nurse| %>
-            <%= link_to profile_path(nurse) do%>
+                <%= link_to profile_path(nurse) do%>
                 <div class="prof-card">
                     <div class="card-body">
                         <% if nurse.picture.attached? %>
@@ -24,7 +26,10 @@
         </div>
 
     <% else %>
-        <p> Sorry... No results found...<br> Try searching nearby suburbs or your city. </p>
+        <p> Sorry... No results found...
+        <br> Try searching nearby suburbs or your city.
+        <br>You could also try including your state, eg. <i>'Marrickville, NSW'</i>
+        </p>
             <div class="input-group mb-8">
                     <%= form_tag(find_path, method: 'get') do %>
                     <div class="input-group-append">

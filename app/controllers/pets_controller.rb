@@ -3,8 +3,7 @@ class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  # GET /pets
-  # GET /pets.json
+  # Instead of indexing all pets, filtered to only show the pets owned by the current user
   def index
     @allpets = Pet.includes(:user).all
     @pets = []
@@ -32,7 +31,7 @@ class PetsController < ApplicationController
   end
 
   # POST /pets
-  # POST /pets.json
+  # Automatically sets pet owner to the current user
   def create
     @pet = Pet.new(pet_params)
     @pet.user_id = current_user.id
@@ -51,8 +50,6 @@ class PetsController < ApplicationController
   def pet_params
     params.require(:pet).permit(:name, :user_id, :picture)
   end
-
-
 
   # PATCH/PUT /pets/1
   # PATCH/PUT /pets/1.json

@@ -9,6 +9,7 @@ class ServicesController < ApplicationController
     redirect_to :root
   end
 
+  # Retrieves only services owned by the current user to be displayed
 
   def my_services
     @allservices = Service.includes(:user).all
@@ -23,6 +24,8 @@ class ServicesController < ApplicationController
 
   # GET /services/1
   # GET /services/1.json
+  # Looks a bit weird... but allows the user to create a new booking from services#show by pulling in 
+  # Booking.new for the button, and pulling in pets owned by the current user for the drop down form
   def show
     @booking = Booking.new
     @my_pets = []
@@ -45,6 +48,7 @@ class ServicesController < ApplicationController
 
   # POST /services
   # POST /services.json
+  # Sets user_id to current_user id
   def create
     @service = Service.new(service_params)
     @service.user_id = current_user.id

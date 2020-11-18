@@ -59,15 +59,18 @@ class BookingsController < ApplicationController
   end
 
   # GET /bookings/new
+  #Users do not create a new booking through 
+  #this form - so if someone is sneaky and tries to
+  #go this route, they will be directed to the find page
+  #to search for nurses and services in their area instead
   def new
-    @booking = Booking.new
-
-  
+    redirect_to find_path
 
   end
 
   # GET /bookings/1/edit
   def edit
+    redirect_to bookings_path
   end
 
   # POST /bookings

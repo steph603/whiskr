@@ -2,14 +2,14 @@ class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  # GET /addresses
-  # GET /addresses.json
+  #Don't need an index page for addresses, so if a user attempts to view it, reroute to root. 
+  #Would like to create an admin login who could have access to the index and edit/delete if needed
   def index
     redirect_to root_path
   end
 
-  # GET /addresses/1
-  # GET /addresses/1.json
+  # Same as above - do not need to show the address on it's own page.  User can see and edit their own address 
+  # via profile/my_profile.  
   def show
     redirect_to root_path
   end
@@ -26,6 +26,9 @@ class AddressesController < ApplicationController
 
   # POST /addresses
   # POST /addresses.json
+
+  #Auto-sets the new address' user_id to the current user - prevents user having to enter their own id 
+
   def create
     @address = Address.new(address_params)
     @address.user_id = current_user.id
@@ -56,10 +59,13 @@ class AddressesController < ApplicationController
 
   # DELETE /addresses/1
   # DELETE /addresses/1.json
+
+  # I dont think this method is utilised anywhere - but keeping it in as I will add admin role later on
+
   def destroy
     @address.destroy
     respond_to do |format|
-      format.html { redirect_to addresses_url, notice: 'Address was successfully destroyed.' }
+      format.html { redirect_to addresses_url, notice: 'Address was successfully deleted.' }
       format.json { head :no_content }
     end
   end

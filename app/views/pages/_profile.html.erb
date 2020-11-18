@@ -1,5 +1,7 @@
 
-<%# If user has a picture, display it, otherwise, display the default user/nurse image - could add male/female field and render different images%>
+<%# If user has a picture, display it, otherwise, 
+display the default user/nurse image 
+- could add male/female field and render different images%>
 
 <% if @user.picture.attached? %>
     <%= image_tag @user.picture, class:"user-image" %>
@@ -15,6 +17,11 @@
     </h2>
     <br>
 
+
+<%# If user is current user, show the whole address and give 
+the option to edit the full address and login details,
+if they are not the owner of the profile, only show
+the user's suburb and state.  %>
 <% if @user == current_user %>
     <p>
         <strong>Address:</strong><br>
@@ -26,7 +33,7 @@
     <%= link_to 'Edit Login Details', edit_user_registration_path %>
 
 <% else %>
-    <%= @user.address.suburb rescue nil%>
+    <%= @user.address.address rescue nil%>
 <%end%>
 
     <% if @user.is_nurse? && @user.services.length > 0%>    
@@ -63,7 +70,9 @@
 
 
 
-
+<%# If there are no services for the user, say so,
+ and if the user is a nurse, give them the option to
+create a new service, %>
     <%elsif @user.is_nurse? && @user.services.length == 0%>
 <div class="content-container">
         <p> No services listed yet!  </p>
