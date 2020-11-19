@@ -1,9 +1,10 @@
 
-
-<p id="notice"><%= notice %></p>
-
   <% if @booking.pet.picture.attached? %>
     <%= image_tag @booking.pet.picture, class:"pet-image"  %>
+      <%elsif @booking.pet.species == "Dog" %>
+    <%= image_tag 'dog.png', class:"pet-image"%>
+  <% elsif @booking.pet.species =="Cat"%>
+    <%= image_tag 'cat.png', class:"pet-image"%>
     <%end%>
 <p>
   <strong>Service:</strong>
